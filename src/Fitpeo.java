@@ -4,14 +4,13 @@
 
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.manager.SeleniumManager;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 public class Fitpeo {
@@ -37,9 +36,15 @@ public class Fitpeo {
 		
 		 
 		WebElement slider = driver.findElement(By.cssSelector("input[data-index='0']"));// stores the web element 
-    	 Actions act1 = new Actions(driver);
+    	
+	//	WebElement slider= driver.findElement(By.cssSelector("input[aria-valuenow='200']"));
+		Actions act1 = new Actions(driver);
 		 
 		 Thread.sleep(2000); // wait for 2 seconds 
+		 
+		 // JavascriptExecutor js = (JavascriptExecutor) driver;
+		  //js.executeScript("arguments[0].setAttribute('aria-valuenow', '820');", slider);// will update  slider position to 820 but text box value is not getting updated so this is not used 
+
 		 
 		 act1.clickAndHold(slider).moveByOffset(94, 0).release().perform(); // moves the slider position to 820
 		 
@@ -73,7 +78,7 @@ public class Fitpeo {
 		 textbox.sendKeys(Keys.BACK_SPACE);
 		 textbox.sendKeys(Keys.BACK_SPACE);
 		 
-		 textbox.sendKeys("820"); // enters value in textbox
+		 textbox.sendKeys("820"); // enters 820 value again in textbox to get final Reimbursement value to 110700
 		 
 		 Thread.sleep(2000); // wait for 2 seconds 
 		 
